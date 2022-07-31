@@ -13,3 +13,9 @@ post '/' do
   broker.add_message_to_queue(received_body, topic)
   JSON.generate({ status: 'Success' })
 end
+
+get '/' do
+  content_type :json
+  topic = request.env["HTTP_TOPIC"]
+  JSON.generate(broker.send_to_listener(topic))
+end
