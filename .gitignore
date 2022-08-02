@@ -1,4 +1,5 @@
 /.idea/
 testing_broker.rb
 testing_producer.rb
+testing_consumer.rb
 Gemfile.lock
