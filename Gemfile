@@ -11,3 +11,7 @@ gem "json", "~> 2.6"
 gem "puma", "~> 5.6"
 
 gem "net", "~> 0.3.3"
+
+gem "rake"
+
+gem "rubocop"
