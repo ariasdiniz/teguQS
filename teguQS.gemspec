@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sinatra", "2.2"
   spec.add_dependency "singly_linked_queue", "0.1.0"
   spec.add_dependency "json", "2.6"
-  spec.add_dependency "puma", "5.6"
+  spec.add_dependency "puma", "5.6.4"
   spec.add_dependency "net", "0.3.3"
 
   # Specify which files should be added to the gem when it is released.
