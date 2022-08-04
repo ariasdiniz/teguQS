@@ -1,6 +1,8 @@
 require 'net/http'
 require 'json'
 
+##
+# Http service responsible of producing to topics.
 module ProducerHttp
 
   def self.send(message, uri, port, topic)

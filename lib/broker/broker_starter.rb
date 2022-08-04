@@ -3,6 +3,8 @@ require 'json'
 require_relative 'broker'
 require_relative 'errors/invalid_message_format'
 
+##
+# class that starts the broker server using Sinatra. The default port is 4566 and default server is localhost.
 class BrokerStarter < Sinatra::Base
   set port: 4566
 
