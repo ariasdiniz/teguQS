@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["documentation_uri"] = "https://rubydoc.info/gems/teguqs"
+  spec.metadata["documentation_uri"] = "https://rubydoc.info/gems/teguQS"
 
   spec.add_dependency "sinatra", "2.2"
   spec.add_dependency "singly_linked_queue", "0.1.0"
