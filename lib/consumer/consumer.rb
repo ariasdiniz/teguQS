@@ -1,5 +1,6 @@
-require_relative 'consumer_http'
-require 'json'
+require_relative "consumer_http"
+require_relative "../producer/producer"
+require "json"
 
 class Consumer
 
@@ -10,7 +11,7 @@ class Consumer
   # @param topic String
   # @param port Int
   # @param uri String
-  def initialize(topic, uri = 'http://localhost', port = 4566)
+  def initialize(topic, uri = "http://localhost", port = 4566)
     @topic = topic
     @uri = uri
     @port = port
@@ -19,17 +20,23 @@ class Consumer
   ##
   # When this method starts, it enters a loop to consume from the specified topic.
   # It will execute the Block passed to this method on every iteration yielding
-  # the block with the message from the topic.
+  # the block with the message from the topic. If any exception occur, the message will return
+  # to the topic and not be "consumed"
   # Recommended to be used inside a Thread.
   def consume
     body = "null"
+    acknowledge = Producer.new(@topic, @port, @uri)
     loop do
-      if body == 'null' or body == '{"error":"The specified topic doesn\'t exist"}'
+      if body == "null" or body == '{"error":"The specified topic doesn\'t exist"}'
         sleep(0.2)
       end
       body = ConsumerHttp::consume(@topic, @uri, @port)
       unless body == "null"
-        yield(JSON.parse(body))
+        begin
+          yield(JSON.parse(body))
+        rescue => e
+          acknowledge.send_with_callback(body)
+        end
       end
     end
   end

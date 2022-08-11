@@ -15,6 +15,14 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
+### Notes
+
+The consumer will run on loop, consuming messages from the desired topic.
+Multiple consumers can consume from the same topic at the same time.
+The "acknowledge" of the message is automatic; If no errors/exceptions are raised
+inside the block passed by the consumer, the message will be considered "consumed".
+Otherwise it will return to the topic queue.
+
 ### Starting a broker
 ```ruby
 require 'tegu_qs'
