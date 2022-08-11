@@ -24,12 +24,8 @@ class Consumer
   # to the topic and not be "consumed"
   # Recommended to be used inside a Thread.
   def consume
-    body = "null"
     acknowledge = Producer.new(@topic, @port, @uri)
     loop do
-      if body == "null" or body == '{"error":"The specified topic doesn\'t exist"}'
-        sleep(0.2)
-      end
       body = ConsumerHttp::consume(@topic, @uri, @port)
       unless body == "null"
         begin
