@@ -12,6 +12,7 @@ class Producer
   # @param topic String
   # @param port Int
   # @param uri String
+  # @return Producer
   def initialize(topic, port=4566, uri="http://localhost")
     @topic = topic
     @port = port

@@ -11,3 +11,8 @@
 ## [0.1.3] - 2022-08-11
 
 - Removing "sleep" from consumer, incresing performance
+
+## [0.1.4] 2022-08-16
+
+- The consumer "consume" method now returns a new Thread
+- Documentation more clarifying now

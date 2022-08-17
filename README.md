@@ -36,9 +36,9 @@ require 'tegu_qs'
 
 consumer = TeguQS::consumer('test-topic')
 
-puts(consumer.consume) { |message|
+consumer.consume do |message|
   puts message
-}
+end.join
 ```
 
 ### Producing to the topic
