@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "consumer_http"
 require_relative "../producer/producer"
 require "json"
@@ -5,7 +7,6 @@ require "json"
 ##
 # Consumer class. This class is responsible to consume events from the broker.
 class Consumer
-
   ##
   # The consumer receives 3 arguments to initialize. The name of the topic,
   # the port and uri where the broker is hosted.
@@ -32,11 +33,12 @@ class Consumer
     Thread.new do
       acknowledge = Producer.new(@topic, @port, @uri)
       loop do
-        body = ConsumerHttp::consume(@topic, @uri, @port)
+        body = ConsumerHttp.consume(@topic, @uri, @port)
         next if body == "null"
+
         begin
           yield(JSON.parse(body))
-        rescue => e
+        rescue StandardError => e
           acknowledge.send_with_callback(body)
         end
       end

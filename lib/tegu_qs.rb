@@ -1,6 +1,8 @@
-require_relative 'broker/broker_starter'
-require_relative 'consumer/consumer'
-require_relative 'producer/producer'
+# frozen_string_literal: true
+
+require_relative "broker/broker_starter"
+require_relative "consumer/consumer"
+require_relative "producer/producer"
 
 ##
 # Module with factories for the TeguQS
@@ -18,7 +20,7 @@ module TeguQS
   # @param uri String
   # @param port Int
   # @return Consumer
-  def self.consumer(topic, uri = 'http://localhost', port = 4566)
+  def self.consumer(topic, uri = "http://localhost", port = 4566)
     Consumer.new(topic, uri, port)
   end
 
@@ -28,7 +30,7 @@ module TeguQS
   # @param uri String
   # @param port Int
   # @return Producer
-  def self.producer(topic, uri = 'http://localhost', port = 4566)
+  def self.producer(topic, uri = "http://localhost", port = 4566)
     Producer.new(topic, port, uri)
   end
 end

@@ -1,4 +1,6 @@
-require_relative 'broker_operations'
+# frozen_string_literal: true
+
+require_relative "broker_operations"
 
 ##
 # Class that represents the broker
@@ -12,6 +14,6 @@ class Broker
   # Creates a new broker.
   # @return Broker
   def initialize
-    @queues = Hash.new
+    @queues = {}
   end
 end

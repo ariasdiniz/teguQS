@@ -1,4 +1,6 @@
-require_relative 'producer_http'
+# frozen_string_literal: true
+
+require_relative "producer_http"
 
 ##
 # The producer implementation.
@@ -13,7 +15,7 @@ class Producer
   # @param port Int
   # @param uri String
   # @return Producer
-  def initialize(topic, port=4566, uri="http://localhost")
+  def initialize(topic, port = 4566, uri = "http://localhost")
     @topic = topic
     @port = port
     @uri = uri
@@ -26,8 +28,8 @@ class Producer
   # @return String
   def send_with_callback(message)
     begin
-      ProducerHttp::send(message, @uri, @port, @topic)
-    rescue => e
+      ProducerHttp.send(message, @uri, @port, @topic)
+    rescue StandardError => e
       return e.message
     end
     "Sent with success"
