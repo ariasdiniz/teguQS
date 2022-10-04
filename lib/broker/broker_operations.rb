@@ -12,7 +12,7 @@ module BrokerOperations
   # @param message String
   # @param topic String
   def add_message_to_queue(message, topic)
-    queues[topic] = SinglyLinkedQueue::LinkedQueue.new if queues[topic].nil?
+    queues[topic] ||= SinglyLinkedQueue::LinkedQueue.new
     queues[topic].put(message)
   end
 
